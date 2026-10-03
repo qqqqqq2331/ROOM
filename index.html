@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>상담실 임대 안내 — 오롯하다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F8F6F2;--bg2:#FFFFFF;--bg3:#F0EDE7;
+  --text:#2A2825;--text2:#706D68;--text3:#A09D99;
+  --accent:#7A9E7E;--accent-l:#EBF2EC;--accent-d:#5A7E5E;
+  --gold:#B8965A;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
+  --serif:'Noto Serif KR',serif;--sans:'Noto Sans KR',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:16px;line-height:1.8;font-weight:300}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(248,246,242,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-txt{display:flex;flex-direction:column;line-height:1.25}
+.logo-txt small{font-size:0.62rem;color:var(--text3);letter-spacing:0.05em;font-family:var(--sans);font-weight:300}
+.logo-txt strong{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--text)}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:0.82rem;color:var(--text2);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{font-size:0.82rem;font-weight:500;color:var(--accent);border:1px solid var(--accent);border-radius:20px;padding:6px 18px;text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:var(--accent);color:#fff}
+
+/* HERO */
+.hero{padding:110px 5% 90px;max-width:1100px;margin:0 auto}
+.hero-tag{font-size:0.8rem;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;margin-bottom:1.5rem;font-weight:400}
+.hero h1{font-family:var(--serif);font-size:clamp(1.9rem,4vw,3rem);font-weight:300;line-height:1.45;color:var(--text);margin-bottom:2rem;letter-spacing:-0.01em}
+.hero h1 strong{font-weight:600;color:var(--accent-d)}
+.hero-desc{max-width:580px;color:var(--text2);font-size:1rem;line-height:1.9;margin-bottom:3rem}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:13px 28px;border-radius:3px;font-size:0.9rem;font-weight:500;transition:background 0.2s}
+.btn-primary:hover{background:var(--accent-d)}
+.btn-secondary{font-size:0.85rem;color:var(--text2);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--text3);transition:color 0.2s}
+.btn-secondary:hover{color:var(--text)}
+.hero-stats{display:flex;gap:3rem;padding-top:4rem;border-top:1px solid var(--border);margin-top:4rem;flex-wrap:wrap}
+.stat-item .num{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--text);line-height:1}
+.stat-item .label{font-size:0.8rem;color:var(--text3);margin-top:6px;letter-spacing:0.04em}
+
+/* COMMON */
+section{padding:90px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:0.78rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;text-transform:uppercase;font-weight:400}
+.section-title{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;color:var(--text);margin-bottom:1.2rem;line-height:1.5}
+.section-lead{color:var(--text2);max-width:640px;line-height:1.9;margin-bottom:3rem}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* FEATURES */
+.features{background:var(--bg2)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:3rem}
+.feature-item{padding:1.8rem;border:1px solid var(--border);border-radius:2px}
+.feature-icon{font-size:1.4rem;margin-bottom:1rem}
+.feature-item h4{font-size:0.95rem;font-weight:500;color:var(--text);margin-bottom:0.5rem}
+.feature-item p{font-size:0.85rem;color:var(--text2);line-height:1.8}
+
+/* PLANS */
+.plans{background:var(--bg3)}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem;background:var(--border)}
+.plan-card{background:var(--bg);padding:2.2rem 2rem;display:flex;flex-direction:column}
+.plan-badge{display:inline-block;font-size:0.72rem;letter-spacing:0.1em;background:var(--accent-l);color:var(--accent-d);padding:3px 10px;border-radius:20px;margin-bottom:1.2rem;font-weight:500;align-self:flex-start}
+.plan-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:0.4rem;line-height:1.5}
+.plan-sub{font-size:0.8rem;color:var(--text3);margin-bottom:1.5rem}
+.plan-price-box{background:var(--bg3);padding:1.2rem;border-radius:2px;margin-bottom:1.5rem}
+.plan-price-main{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--text);line-height:1.2}
+.plan-price-unit{font-size:0.8rem;color:var(--text3);margin-top:4px}
+.plan-price-extra{font-size:0.82rem;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.plan-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;flex:1}
+.plan-list li{font-size:0.85rem;color:var(--text2);padding-left:1rem;position:relative;line-height:1.7}
+.plan-list li::before{content:'—';position:absolute;left:0;color:var(--text3);font-size:0.75rem}
+.plan-list li.highlight{color:var(--accent-d);font-weight:500}
+.plan-list li.highlight::before{color:var(--accent)}
+.plan-featured{background:var(--bg2);border-top:2px solid var(--accent)}
+
+/* LOCATION */
+.location{background:var(--bg2)}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.location-info{display:flex;flex-direction:column;gap:1.8rem;margin-top:2rem}
+.loc-row{display:flex;flex-direction:column;gap:4px}
+.loc-row span:first-child{font-size:0.78rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
+.loc-row span:last-child,.loc-row a{font-size:0.95rem;color:var(--text);text-decoration:none}
+.loc-row a:hover{color:var(--accent)}
+.location-note{font-size:0.85rem;color:var(--text2);line-height:1.95;padding:1.5rem;background:var(--bg3);border-left:2px solid var(--accent-l)}
+
+/* INQUIRY */
+.inquiry{background:var(--bg3)}
+.inquiry-inner{max-width:680px;margin:0 auto;text-align:center}
+.inquiry-inner .section-title{margin-bottom:0.8rem}
+.inquiry-inner .section-lead{margin:0 auto 2.5rem;text-align:left}
+.inquiry-steps{display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;text-align:left}
+.inquiry-step{display:flex;gap:1rem;align-items:flex-start;font-size:0.88rem;color:var(--text2);line-height:1.7}
+.step-circle{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:0.7rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.cta-big{display:inline-flex;align-items:center;gap:0.6rem;background:var(--accent);color:#fff;text-decoration:none;padding:16px 36px;border-radius:3px;font-size:0.95rem;font-weight:500;letter-spacing:0.02em;transition:background 0.2s}
+.cta-big:hover{background:var(--accent-d)}
+.cta-big::after{content:'→'}
+.inquiry-note{font-size:0.8rem;color:var(--text3);margin-top:1.2rem}
+
+/* FOOTER */
+footer{background:var(--bg);padding:2.5rem 5%;border-top:1px solid var(--border)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--serif);font-size:0.95rem;color:var(--text)}
+.footer-copy{font-size:0.78rem;color:var(--text3)}
+
+@media(max-width:768px){
+  .features-grid,.plans-grid{grid-template-columns:1fr;gap:1px}
+  .location-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero-stats{gap:2rem}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 80 54" height="36" fill="#B8965A">
+        <circle cx="14" cy="27" r="7.5"/>
+        <circle cx="30" cy="14" r="7.5"/>
+        <circle cx="50" cy="14" r="7.5"/>
+        <circle cx="66" cy="27" r="7.5"/>
+        <path d="M5,52 L5,38 Q5,31 14,29 Q22,27 30,23 Q40,19 50,23 Q58,27 66,29 Q75,31 75,38 L75,52 Z"/>
+      </svg>
+      <span class="logo-txt"><small>상담실 임대 안내</small><strong>오롯하다</strong></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#plans">임대 유형</a></li>
+      <li><a href="#location">공간 안내</a></li>
+      <li><a href="#inquiry">문의하기</a></li>
+    </ul>
+    <a href="#inquiry" class="nav-cta">임대 문의</a>
+  </div>
+</nav>
+
+<section style="padding:0">
+  <div class="hero">
+    <p class="hero-tag">전문 상담실 임대</p>
+    <h1>상담을 위해<br>설계된 공간,<br><strong>함께 나눕니다</strong></h1>
+    <p class="hero-desc">대전 용문역 도보 2분, 롯데백화점 인접. 조용하고 안정적인 상담 환경에서 운영자의 필요에 맞는 임대 유형을 선택하세요.</p>
+    <div class="hero-actions">
+      <a href="#plans" class="btn-primary">임대 유형 보기</a>
+      <a href="#inquiry" class="btn-secondary">문의하기</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="num">3가지</div><div class="label">임대 유형</div></div>
+      <div class="stat-item"><div class="num">도보 2분</div><div class="label">용문역에서</div></div>
+      <div class="stat-item"><div class="num">15,000원~</div><div class="label">시간당 최저 이용료</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="features" id="features">
+  <div class="section-inner">
+    <p class="section-tag">공간 소개</p>
+    <h2 class="section-title">상담 목적에 맞게 설계된 공간</h2>
+    <p class="section-lead">심리상담, 정서지원 프로그램 운영 등 상담 목적에 적합하도록 설계된 상담실입니다. 조용하고 안정적인 상담 환경 유지를 최우선으로 운영합니다.</p>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🏢</div>
+        <h4>접근성 좋은 위치</h4>
+        <p>대전 서구 용문역 4번 출구 도보 2분, 롯데백화점 인접. 내담자가 찾아오기 쉬운 교통 요충지에 위치합니다.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔒</div>
+        <h4>독립적인 상담 환경</h4>
+        <p>외부 소음과 시선을 차단한 독립 구조로, 내담자의 프라이버시와 상담의 집중도를 보장합니다.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📋</div>
+        <h4>유연한 이용 방식</h4>
+        <p>장기 전용 임대부터 단회 시간제까지, 운영 규모와 방식에 따라 선택할 수 있는 세 가지 임대 유형을 운영합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="plans" id="plans">
+  <div class="section-inner">
+    <p class="section-tag">임대 유형</p>
+    <h2 class="section-title">운영 방식에 맞는 유형을 선택하세요</h2>
+    <p class="section-lead">임대 유형은 사용 빈도와 운영 목적에 따라 구분됩니다. 문의 시 임대 유형, 사용 목적, 예상 이용 시간을 함께 알려주시면 안내해드립니다.</p>
+    <div class="plans-grid">
+
+      <div class="plan-card">
+        <span class="plan-badge">전용 임대형</span>
+        <h3>지정 상담실<br>단독 사용</h3>
+        <p class="plan-sub">장기적이고 안정적인 운영자에게 적합</p>
+        <div class="plan-price-box">
+          <div class="plan-price-main">월 25 — 40만원</div>
+          <div class="plan-price-unit">크기에 따라 차등 적용 · 관리비 50,000원 / 월 동일</div>
+          <div class="plan-price-extra">보증금 450,000원 (퇴실 시 원상복구 확인 후 반환)</div>
+        </div>
+        <ul class="plan-list">
+          <li>상담실 개방시간 내 자유 사용</li>
+          <li class="highlight">지정 상담실 1칸 단독 사용</li>
+          <li>집기 및 개인 자료 보관 가능</li>
+          <li>안정적인 장기 운영에 적합</li>
+        </ul>
+      </div>
+
+      <div class="plan-card plan-featured">
+        <span class="plan-badge">시간 블록형</span>
+        <h3>비지정 상담실<br>순환 사용</h3>
+        <p class="plan-sub">주 1~2회 정기 상담 운영자에게 적합</p>
+        <div class="plan-price-box">
+          <div class="plan-price-main">월 200,000원</div>
+          <div class="plan-price-unit">4주 총 20시간 기준 (실사용)</div>
+          <div class="plan-price-extra">관리비 없음</div>
+        </div>
+        <ul class="plan-list">
+          <li>예약 시스템을 통한 사전 시간 확정 필수</li>
+          <li class="highlight">비지정 상담실 공동 사용</li>
+          <li>정기 프로그램 운영에 적합</li>
+          <li>유연한 시간 활용 가능</li>
+        </ul>
+      </div>
+
+      <div class="plan-card">
+        <span class="plan-badge">단회 시간제</span>
+        <h3>1시간 단위<br>단회 이용</h3>
+        <p class="plan-sub">간헐적·외부 출장 상담자에게 적합</p>
+        <div class="plan-price-box">
+          <div class="plan-price-main">15,000원</div>
+          <div class="plan-price-unit">시간당 (1시간 단위 예약)</div>
+          <div class="plan-price-extra">관리비 없음</div>
+        </div>
+        <ul class="plan-list">
+          <li>비지정 상담실 사용</li>
+          <li class="highlight">필요한 시간만 유연하게 예약</li>
+          <li>간헐적 면담 및 단기 상담에 적합</li>
+          <li>외부 출장 상담자 환영</li>
+        </ul>
+      </div>
+
+    </div>
+    <p style="font-size:0.82rem;color:var(--text3);margin-top:1.5rem">※ 집단상담 또는 교육 목적의 공간 사용은 위 유형과 별도로 운영됩니다. 문의 시 용도와 인원을 함께 알려주시면 안내해 드립니다.</p>
+    <p style="font-size:0.82rem;color:var(--text2);margin-top:0.8rem;padding:1rem 1.2rem;background:var(--bg2);border-left:3px solid var(--accent-l)">시간 블록형 및 단회 시간제 이용자는 <a href="https://map.naver.com/p/entry/place/1282702355" target="_blank" style="color:var(--accent-d);text-decoration:none;font-weight:500">네이버 플레이스</a>를 통해 예약해 주세요.</p> id="location">
+  <div class="section-inner">
+    <div class="location-grid">
+      <div>
+        <p class="section-tag">공간 안내</p>
+        <h2 class="section-title">찾아오시기 편한<br>도심 속 상담 공간</h2>
+        <div class="location-info">
+          <div class="loc-row">
+            <span>주소</span>
+            <span>대전 서구 계룡로 624, 802호</span>
+          </div>
+          <div class="loc-row">
+            <span>교통</span>
+            <span>용문역 4번 출구 도보 2분<br><small style="font-size:0.82rem;color:var(--text3)">롯데백화점 인접 · 올리브영 건물</small></span>
+          </div>
+          <div class="loc-row">
+            <span>전화</span>
+            <span>042-524-5051 &nbsp;/&nbsp; 010-4282-5051</span>
+          </div>
+          <div class="loc-row">
+            <span>이메일</span>
+            <a href="mailto:counsel-orot@naver.com">counsel-orot@naver.com</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="location-note">
+          본 공간은 심리상담, 정서지원 프로그램 운영 등 상담 목적에 적합하도록 설계된 전문 상담실입니다.<br><br>
+          조용하고 안정적인 상담 환경 유지를 위해 임대 신청 시 사용 목적을 검토하며, 상담 목적에 부합하는 운영자에 한해 임대를 진행합니다.<br><br>
+          궁금하신 점은 문의 양식 또는 전화로 편하게 연락 주세요. 검토 후 개별적으로 안내드립니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="inquiry" id="inquiry">
+  <div class="section-inner">
+    <div class="inquiry-inner">
+      <p class="section-tag" style="text-align:center">문의 안내</p>
+      <h2 class="section-title">임대 문의는 아래 순서로 진행됩니다</h2>
+      <p class="section-lead">링크로 접수해 주시면 됩니다. 아래 내용을 간단히 작성하여 문의 바랍니다.</p>
+      <div class="inquiry-steps">
+        <div class="inquiry-step">
+          <div class="step-circle">1</div>
+          <div>희망하시는 <strong>임대 유형</strong>을 선택해 주세요 (전용 / 시간 블록 / 단회 시간제)</div>
+        </div>
+        <div class="inquiry-step">
+          <div class="step-circle">2</div>
+          <div>상담실 <strong>사용 목적</strong>을 간략히 작성해 주세요 (심리상담, 프로그램 운영 등)</div>
+        </div>
+        <div class="inquiry-step">
+          <div class="step-circle">3</div>
+          <div><strong>예상 이용 시간</strong>을 알려주세요 (요일, 시간대, 빈도 등)</div>
+        </div>
+        <div class="inquiry-step">
+          <div class="step-circle">4</div>
+          <div>검토 후 <strong>개별적으로 안내</strong>드립니다</div>
+        </div>
+      </div>
+      <a href="#" class="cta-big">문의 접수하기</a>
+      <p class="inquiry-note">문의 접수 후 평균 24시간 이내 회신드립니다</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">비영리 가족상담센터 오롯하다 — 상담실 임대</span>
+    <span class="footer-copy">042-524-5051 · counsel-orot@naver.com · 대전 서구 계룡로 624</span>
+  </div>
+</footer>
+
+</body>
+</html>
